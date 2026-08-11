@@ -1,0 +1,40 @@
+[package]
+name = "thuthesis"
+version = "0.1.0"
+entrypoint = "lib.typ"
+authors = ["The ThuThesis maintainers"]
+license = "LPPL-1.3c"
+description = "Tsinghua University thesis template for Typst"
+repository = "https://github.com/tuna/thuthesis"
+categories = ["thesis"]
+disciplines = ["education"]
+compiler = "0.15.1"
+exclude = [
+    ".git",
+    ".github",
+    ".vscode",
+    "build",
+    "data",
+    "figures",
+    "ref",
+    "testfiles",
+    "tests",
+    "utils",
+    "*.tex",
+    "*.dtx",
+    "*.ins",
+    "*.bst",
+    "*.bbx",
+    "*.cbx",
+    "*.lua",
+    "*.rc",
+    "Makefile",
+    "package.json",
+    "thu-fig-logo.pdf",
+    "thu-text-logo.pdf",
+    "thuthesis-example.typ",
+]
+
+[template]
+path = "template"
+entrypoint = "main.typ"

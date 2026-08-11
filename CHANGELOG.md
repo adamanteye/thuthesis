@@ -6,6 +6,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- 新增直接位于仓库根目录的实验性 Typst 模板，覆盖本科、硕士、博士和博士后报告的主要论文结构与组件。
+
 ### Changed
 
 - 恢复本科生的外文资料的调研阅读报告（`survey`）和书面翻译（`translation`），以满足部分院系的要求（[#1069](https://github.com/tuna/thuthesis/issues/1069)）。

@@ -14,6 +14,8 @@
 
 **由于模板升级频繁，在开始使用和提问前，请确保您已经认真完整地阅读了使用说明文档和示例代码。**
 
+本仓库同时提供实验性的 Typst 模板。其文件直接位于仓库根目录，使用说明见 [README-Typst.md](README-Typst.md)。运行 `make typst` 可编译 Typst 示例，运行 `make typst-test` 可执行完整组合测试。
+
 ## 版权
 
 本项目采用 [LaTeX项目公共许可证 v1.3c](https://www.latex-project.org/lppl/lppl-1-3c/) 授权，任何违反该许可证使用 ThuThesis 的行为将被记录在 [耻辱柱](https://github.com/tuna/thuthesis/issues/754) 页面中，以示警告。
@@ -101,6 +103,8 @@ make [{all|thesis|doc|clean|cleanall|distclean}]
 This package establishes a simple and easy-to-use LaTeX template for Tsinghua dissertations, including general undergraduate research papers, master's theses, doctoral dissertations, and postdoctoral reports.
 
 **This template is subject to frequent changes. Please make sure you have read the usage documentation and example code completely and carefully before using and asking questions.**
+
+This repository also contains an experimental Typst template. See [README-Typst.md](README-Typst.md), run `make typst` to compile its example, and run `make typst-test` for the full matrix test suite.
 
 ## Copyright
 

@@ -8,6 +8,8 @@ CLSFILE = dtx-style.sty $(PACKAGE).cls
 
 LATEXMK = latexmk
 SHELL  := /usr/bin/env bash
+TEXMFDIST := $(shell kpsewhich -var-value=TEXMFDIST 2>/dev/null)
+TYPST_FONT_ARGS ?= $(if $(TEXMFDIST),--ignore-system-fonts --font-path "$(TEXMFDIST)/fonts/opentype/public/tex-gyre" --font-path "$(TEXMFDIST)/fonts/opentype/public/fandol" --font-path "$(TEXMFDIST)/fonts/opentype/public/xits")
 
 # make deletion work on Windows
 ifdef SystemRoot
@@ -16,9 +18,15 @@ else
 	RM = rm -f
 endif
 
-.PHONY: all all-dev clean distclean dist thesis viewthesis doc viewdoc cls check save test FORCE_MAKE
+.PHONY: all all-dev clean distclean dist thesis typst viewthesis doc viewdoc cls check save test FORCE_MAKE
 
 thesis: $(THESIS).pdf
+
+typst: build/typst/thuthesis-example.pdf
+
+build/typst/thuthesis-example.pdf: thuthesis-example.typ lib.typ $(wildcard src/*.typ data/*.typ) ref/refs.bib $(wildcard assets/*.pdf figures/*.pdf)
+	@mkdir -p $(@D)
+	typst compile --root . $(TYPST_FONT_ARGS) $< $@
 
 all: thesis
 
@@ -57,7 +65,7 @@ else
 	bash testfiles/test.sh $(target)
 endif
 
-clean:
+clean: compare-clean
 	$(LATEXMK) -c $(PACKAGE).dtx $(THESIS)
 	-@$(RM) -rf *~ main-survey.* main-translation.* _markdown_thuthesis* thuthesis.markdown.*
 
@@ -80,3 +88,5 @@ dist: check all-dev
 	l3build ctan --config utils/build-ctan
 	# use gulp for GitHub release (zip with generated file)
 	python3 utils/create_release.py --version="v$(version)"
+
+include mk/compare.mk
